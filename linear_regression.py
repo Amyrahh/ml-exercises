@@ -25,7 +25,8 @@ def cost_function(X, y, weights, bias):
 
         Output:
         cost: cost of predicting y_hat using given weights, and bias
-        grad: gradient of cost_function at weights, and bias
+        grad_weights: gradient of cost_function at weights, and bias
+        grad_bias: gradient of cost_function at weights, and bias
     """
     pass
 
