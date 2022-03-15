@@ -11,7 +11,8 @@ def predict(X, weights, bias):
         Output:
         y_hat: value(s) predicted from given X
     """
-    pass
+    y_hat = np.matmul(X,weights) + bias
+    return y_hat
 
 
 def cost_function(X, y, weights, bias):
