@@ -10,18 +10,18 @@ def test_cost_function_univariate_zero_theta():
     X = univariate_data[:,:1]
     y = univariate_data[:,1].reshape(-1,1)
 
-    cost, grad = cost_function(X, y, weights, bias)
+    cost, grad_weights, grad_bias = cost_function(X, y, weights, bias)
 
     assert round(cost, 2) == 32.07, "Wrong cost"
 
 
-def test_cost_function_univariate_zero_theta():
+def test_cost_function_univariate_random_theta():
     bias = -1
     weights = np.ones((1,1)) * 2
     X = univariate_data[:,:1]
     y = univariate_data[:,1].reshape(-1,1)
 
-    cost, grad = cost_function(X, y, weights, bias)
+    cost, grad_weights, grad_bias = cost_function(X, y, weights, bias)
 
     assert round(cost, 2) == 54.24, "Wrong cost"
 
