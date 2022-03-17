@@ -33,8 +33,8 @@ def cost_function(X, y, weights, bias):
     y_hat = predict(X, weights, bias)
     error = y_hat - y
     cost = 1/(2*m) * np.sum(error**2)
-    grad_bias = 1/m * np.sum(error)
-    grad_weights = 1/m  * np.transpose(X) * error
+    grad_bias = (1/m) * np.sum(error)
+    grad_weights = (1/m) * np.matmul(np.transpose(X), error)
     return cost, grad_bias, grad_weights
 
 
