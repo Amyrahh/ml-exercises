@@ -32,9 +32,9 @@ def cost_function(X, y, weights, bias):
     m = X.shape[0]
     y_hat = predict(X, weights, bias)
     error = y_hat - y
-    cost = 1/(2*m) * (np.sum(error))**2
+    cost = 1/(2*m) * np.sum(error**2)
     grad_bias = 1/m * np.sum(error)
-    grad_weights = 1/m * np.sum(error) * X
+    grad_weights = 1/m  * np.transpose(X) * error
     return cost, grad_bias, grad_weights
 
 
@@ -54,6 +54,7 @@ def gradient_descent(X, y, weights, bias, alpha, iterations):
         bias (float): optimal bias
     """
     cost, grad_bias, grad_weights = cost_function(X, y, weights, bias)
-    weights = weights - alpha*grad_weights
-    bias = bias - alpha*grad_bias
+    for x in range(iterations):  
+        weights = weights - alpha*grad_weights
+        bias = bias - alpha*grad_bias
     return weights, bias
