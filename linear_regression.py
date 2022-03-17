@@ -29,7 +29,13 @@ def cost_function(X, y, weights, bias):
         grad_weights: gradient of cost_function at weights, and bias
         grad_bias: gradient of cost_function at weights, and bias
     """
-    pass
+    m = X.shape[0]
+    y_hat = predict(X, weights, bias)
+    error = y_hat - y
+    cost = 1/(2*m) * (np.sum(error))**2
+    grad_bias = 1/m * np.sum(error)
+    grad_weights = 1/m * np.sum(error) * X
+    return cost, grad_bias, grad_weights
 
 
 def gradient_descent(X, y, weights, bias, alpha, iterations):
@@ -47,4 +53,7 @@ def gradient_descent(X, y, weights, bias, alpha, iterations):
         weights (np.array): optimal weights
         bias (float): optimal bias
     """
-    pass
+    cost, grad_bias, grad_weights = cost_function(X, y, weights, bias)
+    weights = weights - alpha*grad_weights
+    bias = bias - alpha*grad_bias
+    return weights, bias
