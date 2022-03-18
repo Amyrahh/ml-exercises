@@ -53,8 +53,8 @@ def gradient_descent(X, y, weights, bias, alpha, iterations):
         weights (np.array): optimal weights
         bias (float): optimal bias
     """
-    cost, grad_bias, grad_weights = cost_function(X, y, weights, bias)
     for x in range(iterations):  
+        cost, grad_bias, grad_weights = cost_function(X, y, weights, bias)
         weights = weights - alpha*grad_weights
         bias = bias - alpha*grad_bias
     return weights, bias
